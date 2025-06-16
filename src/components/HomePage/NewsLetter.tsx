@@ -53,7 +53,7 @@ const NewsLetter = () => {
   return (
     <div>
       <motion.div
-        className="py-20 text-center container mx-auto px-4"
+        className="py-20  text-center container mx-auto px-4"
         variants={faqVariants}
         initial="hidden"
         whileInView="visible"
