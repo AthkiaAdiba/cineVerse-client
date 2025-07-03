@@ -15,15 +15,24 @@ const HeroSection = () => {
 
   useEffect(() => {
     setIsClient(true);
-    const video = videoRef.current;
-    if (video) {
-      video.currentTime = 20;
-      video.play().catch((error) => {
-        // console.error("Video autoplay failed:", error);
-        setVideoError(true);
-      });
-    }
   }, []);
+
+  useEffect(() => {
+    if (isClient && videoRef.current && !videoError) {
+      // When video loads, set currentTime to 20 and play
+      const handleLoadedMetadata = () => {
+        if (videoRef.current) {
+          videoRef.current.currentTime = 20;
+          videoRef.current.play().catch(() => setVideoError(true));
+        }
+      };
+      const video = videoRef.current;
+      video?.addEventListener("loadedmetadata", handleLoadedMetadata);
+      return () => {
+        video?.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      };
+    }
+  }, [isClient, videoError]);
 
   const handleVideoLoad = () => {
     setIsVideoLoaded(true);
@@ -40,8 +49,8 @@ const HeroSection = () => {
         {isClient && !videoError ? (
           <video
             ref={videoRef}
-            autoPlay
             loop
+            autoPlay
             muted
             playsInline
             onLoadedData={handleVideoLoad}
@@ -78,7 +87,7 @@ const HeroSection = () => {
         <div className="absolute top-0 left-0 h-full w-[80%] md:w-[80%] bg-gradient-to-r from-[#000317] to-transparent" />
       </div>
 
-      <div className="relative z-10 flex items-center pl-2 md:pl-10 pt-0 md:pt-16 justify-start h-full">
+      <div className="relative z-10 flex items-center container mx-auto  justify-start h-full">
         <motion.div
           className="text-left px-4 max-w-4xl"
           initial={{ opacity: 0, y: 20 }}
@@ -89,12 +98,12 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="text-4xl md:text-7xl font-bold text-white mb-3 md:mb-6 tracking-wide"
+            className="text-4xl md:text-7xl  font-bold text-white mb-3 md:mb-6 tracking-wide"
           >
             Welcome to{" "}
-            <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold">
+            <div className=" bg-gradient-to-r inline from-blue-500 to-purple-500 bg-clip-text font-bold text-transparent">
               CineVerse
-            </span>
+            </div>
           </motion.h1>
 
           <motion.p

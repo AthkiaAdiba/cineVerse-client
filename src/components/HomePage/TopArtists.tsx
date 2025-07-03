@@ -111,7 +111,8 @@ const TopArtists = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   return (
-    <motion.div
+    <section id="top-artists">
+      <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "0px 0px -100px 0px" }}
@@ -224,6 +225,7 @@ const TopArtists = () => {
         </div>
       </div>
     </motion.div>
+    </section>
   );
 };
 

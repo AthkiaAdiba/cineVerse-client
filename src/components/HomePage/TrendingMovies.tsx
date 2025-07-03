@@ -76,6 +76,7 @@ const TrendingMovies = () => {
       viewport={{ once: true, amount: 0.2 }}
       variants={sectionVariants}
       className="container mx-auto px-4 py-10"
+      id="trending-movies"
     >
       <div className="container mx-auto px-4" ref={ref}>
         <motion.div

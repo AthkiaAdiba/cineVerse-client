@@ -1,10 +1,8 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import { useRef } from "react";
 
 const topNews = [
@@ -49,8 +47,6 @@ const topNews = [
     category: "Entertainment",
   },
 ];
-
-
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -106,116 +102,129 @@ const TopNews = () => {
       whileInView="visible"
       viewport={{ once: true, margin: "0px 0px -100px 0px" }}
       variants={containerVariants}
-      className="pb-20 lg:px-20"
+       className="md:w-[90%] w-[95%] mx-auto  "
     >
-       <div className="container mx-auto px-4" ref={ref}>
-       <motion.h2
-        className="text-3xl ml-2 md:ml-0 md:text-4xl font-bold text-white mb-8"
-        initial={{ opacity: 0, x: -50 }}
+      <div className="container mx-auto px-2 sm:px-4" ref={ref}>
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold text-white mb-8"
+          initial={{ opacity: 0, x: -50 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8 }}
-      >
-       Top News
-      </motion.h2>
+        >
+          Top News
+        </motion.h2>
 
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={30}
-        speed={600}
-        slidesPerView={3}
-        loop={true}
-        autoplay={{ delay: 4000 }}
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 8,
-          },
-          480: {
-            slidesPerView: 1,
-            spaceBetween: 8,
-          },
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          1024: {
-            slidesPerView: 2,
-            spaceBetween: 12,
-          },
-          1400: {
-            slidesPerView: 3,
-            spaceBetween: 14,
-          },
-        }}
-      >
-        {topNews.map((item, index) => (
-          <SwiperSlide key={index}>
-            <motion.div
-              variants={slideVariants}
-              className="flex gap-5 text-white p-4 cursor-pointer rounded-lg group"
-            >
-              {/* Image wrapper with motion */}
+        <Swiper
+          modules={[Autoplay]}
+          speed={1200}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 8,
+            },
+            480: {
+              slidesPerView: 1,
+              spaceBetween: 8,
+            },
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            1024: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            1280: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+            1536: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+          }}
+          className="news-swiper"
+        >
+          {topNews.map((item, index) => (
+            <SwiperSlide key={index}>
               <motion.div
-                className="w-[40%] overflow-hidden"
-                whileHover="hover"
-                initial="visible"
+                variants={slideVariants}
+                className="flex flex-col sm:flex-row gap-3 text-white p-3 sm:p-4 lg:p-5 cursor-pointer rounded-xl bg-black/20 backdrop-blur-sm border border-white/10 hover:bg-black/30 transition-all duration-300 group"
               >
-                <motion.img
-                  src={item.newsImage}
-                  alt={item.newsTitle}
-                  variants={imageVariants}
-                  className="w-full h-full object-cover"
-                  transition={{ duration: 0.4 }}
-                />
-              </motion.div>
-
-              {/* Text Content */}
-              <motion.div className="w-[60%]" variants={textVariants}>
-                <motion.h3
-                  className="text-xl font-semibold"
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {item.newsTitle}
-                </motion.h3>
-
-                <motion.p
-                  className="text-base text-gray-400 mt-2"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  {item.newsDescription}
-                </motion.p>
-
+                {/* Image wrapper with motion */}
                 <motion.div
-                  className="text-sm mt-4 flex flex-wrap gap-2 text-gray-100"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
+                  className="w-full sm:w-[45%] h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px] overflow-hidden rounded-lg"
+                  whileHover="hover"
+                  initial="visible"
                 >
-                  {[item.newsDate, "•", item.writer, "•", item.category].map(
-                    (text, i) => (
-                      <motion.span
-                        key={i}
-                        whileHover={{ color: "#ffffff" }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {text}
-                      </motion.span>
-                    )
-                  )}
+                  <motion.img
+                    src={item.newsImage}
+                    alt={item.newsTitle}
+                    variants={imageVariants}
+                    className="w-full h-full object-cover"
+                    transition={{ duration: 0.4 }}
+                  />
+                </motion.div>
+
+                {/* Text Content */}
+                <motion.div className="w-full sm:w-[55%] flex flex-col justify-between" variants={textVariants}>
+                  <div>
+                    <motion.h3
+                      className="text-base sm:text-lg md:text-xl font-semibold line-clamp-2 group-hover:text-blue-400 transition-colors duration-300"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {item.newsTitle}
+                    </motion.h3>
+
+                    <motion.p
+                      className="text-xs sm:text-sm md:text-base text-gray-400 mt-1.5 line-clamp-2 md:line-clamp-3"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      {item.newsDescription}
+                    </motion.p>
+                  </div>
+
+                  <motion.div
+                    className="text-xs sm:text-sm mt-3 flex flex-wrap gap-1.5 text-gray-400"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    {[item.newsDate, "•", item.writer, "•", item.category].map(
+                      (text, i) => (
+                        <motion.span
+                          key={i}
+                          className="hover:text-white transition-colors duration-200"
+                          whileHover={{ color: "#ffffff" }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {text}
+                        </motion.span>
+                      )
+                    )}
+                  </motion.div>
                 </motion.div>
               </motion.div>
-            </motion.div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
+
+      <style jsx global>{`
+        .news-swiper {
+          padding: 10px 0;
+        }
+      `}</style>
     </motion.div>
   );
 };

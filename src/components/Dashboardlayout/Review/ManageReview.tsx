@@ -155,7 +155,7 @@ const ManageReview = () => {
                         animate={{ opacity: 1 }}
                         className="border-t border-[#1a2d6d] hover:bg-[#000a3a]/50 transition-colors"
                       >
-                        <td className="px-6 py-4">
+                        <td className="px-2 md:px-6 py-4">
                           <div>
                             <p className="font-medium">{review.user.name}</p>
                             <p className="text-sm text-gray-400">
@@ -163,11 +163,11 @@ const ManageReview = () => {
                             </p>
                           </div>
                         </td>
-                        <td className="px-6 py-4">{review.content.title}</td>
+                        <td className="px-2 md:px-6 py-4">{review.content.title?.length > 20 ? review.content.title.slice(0, 20) + "..." : review.content.title}</td>
                         <td className="px-6 py-4 max-w-md truncate">
-                          {review.reviewText}
+                          {review.reviewText?.length > 25 ? review.reviewText.slice(0, 25) + "..." : review.reviewText}
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-2 md:px-6 py-4">
                           <div className="flex items-center gap-1">
                             <span className="text-yellow-400 text-xl">★</span>
                             <span>{review.rating}/10</span>

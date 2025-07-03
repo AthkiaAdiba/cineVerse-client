@@ -12,35 +12,39 @@ import { formatDate } from '@/utils/FormateDate';
 
 const UserReviews = () => {
   const token = useAppSelector(selectCurrentToken);
-  let user : any;
+  let user: any;
   if (token) {
     user = verifyToken(token);
   }
 
   const { data: reviews, isLoading } = useGetAllReviewQuery(undefined);
-  console.log(reviews);
-  
+  // console.log(reviews);
 
   // Filter reviews by current user ID
   const userReviews = reviews?.data?.filter((review: any) => review.userId === user?.id);
-  console.log(userReviews);
-  
+  // console.log(userReviews);
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="bg-gray-800/50 rounded-lg p-4 animate-pulse">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3  gap-6">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="bg-gradient-to-br from-gray-0 to-gray-0 rounded-2xl shadow-lg border border-white/20 p-6 text-white animate-pulse">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-20 h-28 bg-gray-700 rounded-md" />
-              <div className="flex-1 space-y-2">
-                <div className="h-4 bg-gray-700 rounded w-3/4" />
-                <div className="h-4 bg-gray-700 rounded w-1/2" />
+              <div className="w-16 h-16 rounded-full bg-white/20 border-2 border-white/60" />
+              <div className="flex-1 min-w-0 space-y-2">
+                <div className="h-4 bg-white/30 rounded w-3/4" />
+                <div className="h-3 bg-white/20 rounded w-1/2" />
+                <div className="flex items-center gap-1 mt-1">
+                  <div className="w-4 h-4 rounded bg-white/30" />
+                  <div className="w-8 h-3 rounded bg-white/20 ml-2" />
+                </div>
               </div>
             </div>
-            <div className="space-y-2">
-              <div className="h-4 bg-gray-700 rounded" />
-              <div className="h-4 bg-gray-700 rounded w-5/6" />
+            <div className="h-4 bg-white/30 rounded mb-2 w-full" />
+            <div className="h-4 bg-white/20 rounded mb-4 w-5/6" />
+            <div className="flex items-center justify-between border-t border-white/20 pt-4 mt-4 text-xs">
+              <div className="h-3 bg-white/20 rounded w-1/3" />
+              <div className="h-3 bg-white/20 rounded w-1/4" />
             </div>
           </div>
         ))}
@@ -50,44 +54,54 @@ const UserReviews = () => {
 
   if (!userReviews?.length) {
     return (
-      <div className="text-center py-12">
-        <h3 className="text-xl text-gray-400">No reviews yet</h3>
-        <p className="text-gray-500 mt-2">Start reviewing movies to see them here!</p>
+      <div className="text-center py-8 md:py-12">
+        <h3 className="text-lg md:text-xl text-gray-400">No reviews yet</h3>
+        <p className="text-gray-500 mt-2 text-sm md:text-base">Start reviewing movies to see them here!</p>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
       {userReviews.map((review: any) => (
-        <div key={review.id} className="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-800/70 transition-colors">
+        <div
+          key={review.id}
+          className="bg-gradient-to-br from-gray-0 to-gray-0 rounded-2xl shadow-lg border border-white/20 p-6 flex flex-col justify-between  text-white hover:shadow-2xl"
+        >
           <div className="flex items-center gap-4 mb-4">
-            <Link href={`/movies/${review?.content?.id}`}>
+            <Link href={`/movies/${review?.content?.id}`} className="flex-shrink-0">
               <Image
                 src={review?.content?.thumbnail}
                 alt={review?.content?.title}
-                width={80}
-                height={112}
-                className="rounded-md object-cover"
+                width={64}
+                height={64}
+                className="rounded-full object-cover w-16 h-16 border-2 border-white/60 shadow-sm bg-white/20"
               />
             </Link>
-            <div>
-              <Link 
-                href={`/movies/${review?.content?.id}`}
-                className="text-lg font-semibold text-white hover:text-blue-400 transition-colors"
-              >
-                {review?.content?.title}
-              </Link>
-              <div className="flex items-center gap-1 mt-1">
-                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                <span className="text-sm text-gray-300">{review?.rating}/10</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-1">
+                <Link href={`/movies/${review?.content?.id}`} className="font-semibold text-white text-lg truncate">
+                    {review?.content?.title}
+                </Link>
               </div>
-              <p className="text-sm text-gray-400 mt-1">
-                {formatDate(review?.createdAt)}
-              </p>
+              <div className="flex items-center gap-2 text-sm text-indigo-100/80">
+                <span>{review?.user?.name || 'User'}</span>
+                <span className="mx-1">·</span>
+                <span>{formatDate(review?.createdAt)}</span>
+              </div>
+              <div className="flex items-center gap-1 mt-1">
+                {[...Array(1)].map((_, i) => (
+                  <Star key={i} className={`w-4 h-4 ${i < Math.round((review?.rating || 0) / 2) ? 'text-yellow-300 fill-yellow-300' : 'text-white/40'}`} />
+                ))}
+                <span className="text-xs text-indigo-100/80 ml-2">{review?.rating}/10</span>
+              </div>
             </div>
           </div>
-          <p className="text-gray-300 line-clamp-3">{review?.reviewText}</p>
+          <p className="text-white/90 text-base leading-relaxed truncate">{review?.reviewText}</p>
+          <div className="flex items-center justify-between border-t border-white/20 pt-4 mt-4 text-xs text-indigo-100/80">
+            <span>Email: {review?.user?.email || 'N/A'}</span>
+            <span>Status: {review?.status || 'N/A'}</span>
+          </div>
         </div>
       ))}
     </div>

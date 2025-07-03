@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs } from "swiper/modules";
+import { Thumbs } from "swiper/modules";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { LuPlus } from "react-icons/lu";
 import { BiMoviePlay } from "react-icons/bi";
+import { motion } from "framer-motion";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 type Slide = {
@@ -55,141 +55,139 @@ const HomeBanner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div
-      className="
-        flex flex-col md:flex-row items-center min-h-[80vh] text-white 
-        px-4 py-6 md:px-10 md:py-10 lg:px-20 lg:py-20 relative
-      "
-      style={{
-        background:
-          "linear-gradient(20deg, #181c2e 5%, transparent 90%), url('/bg_playlist.webp') no-repeat center/cover",
-      }}
-    >
-      {/* Content */}
-      <div className="w-full md:flex-1 z-10 mb-6 md:mb-0">
-        <h1 className="text-3xl md:text-5xl font-bold">Almost Adults</h1>
-        <p className="text-base md:text-lg my-4 md:my-6 max-w-xl">
-          This comedy feature follows two best friends in their final year of
-          college while they transition into adulthood. One embraces her
-          sexuality and...
-        </p>
-        <div className="flex gap-3 md:gap-5">
-          <button className="px-4 py-2 md:px-6 md:py-3 cursor-pointer flex gap-2 items-center rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-purple-500 shadow-md hover:opacity-90 transition text-base md:text-lg">
-            <FaRegCirclePlay className="text-lg md:text-xl" /> Play Now
-          </button>
-          <button className="bg-[#23243a] hover:bg-indigo-700 text-white w-10 h-10 md:w-14 md:h-14 rounded-xl text-xl md:text-2xl flex items-center justify-center transition">
-            <LuPlus className="text-2xl md:text-3xl" />
-          </button>
-        </div>
+    <div className="relative min-h-[80vh] w-full overflow-hidden">
+      {/* Background with Gradient Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/bg_playlist.webp')",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-[#181c2e] via-[#181c2e]/95 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#181c2e] via-transparent to-transparent" />
       </div>
-      {/* Swiper Section */}
-      <div className="relative w-full md:w-[600px] h-[300px] md:h-[350px] flex justify-center">
-        {/* Main Swiper */}
-        <div className="relative w-full max-w-full h-full mx-auto">
-          <Swiper
-            loop={true}
-            speed={600}
-            modules={[Thumbs, Navigation]}
-            navigation={{
-              prevEl: ".prev",
-              nextEl: ".next",
-            }}
-            thumbs={{ swiper: thumbsSwiper }}
-            className="w-full h-full overflow-hidden"
-          >
-            {slides.map((slide, idx) => (
-              <SwiperSlide key={idx}>
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className="w-full h-full object-cover"
-                />
-                <a
-                  href={slide.trailer}
-                  className="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 text-white px-4 py-2 md:px-8 md:py-4 rounded-lg text-base md:text-lg gap-2 no-underline flex flex-col items-center"
-                >
-                  <BiMoviePlay className="mx-auto text-3xl md:text-5xl" />
-                  <p className="text-base md:text-xl font-bold">
-                    Watch Trailer!
-                  </p>
-                </a>
-              </SwiperSlide>
-            ))}
-          </Swiper>
 
-          {/* Overlayed thumbnails: horizontal on mobile, vertical on desktop */}
-          <div
-            className="
-    absolute left-1/2 -translate-x-1/2 bottom-[-80px] w-full h-[70px] flex items-center
-    md:top-1/2 md:right-[-10%] md:left-auto md:bottom-auto md:-translate-y-1/2 md:w-[120px] md:h-[360px] md:flex-col
-    z-20
-  "
+      {/* Content Container */}
+      <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          {/* Text Content */}
+          <motion.div 
+            className="w-full lg:w-1/2"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            {/* Top Navigation */}
-            <div className="hidden md:flex justify-center mb-3">
-              <div className="prev  hover:bg-gradient-to-r translate-y-2 transition-all duration-300 bg-black/30 backdrop:blur-md   from-blue-500 to-purple-500 w-28 h-8 rounded-lg z-30 flex items-center justify-center cursor-pointer rotate-180">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 fill-white"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M11.99997 18.1669a2.38 2.38 0 0 1-1.68266-.69733l-9.52-9.52a2.38 2.38 0 1 1 3.36532-3.36532l7.83734 7.83734 7.83734-7.83734a2.38 2.38 0 1 1 3.36532 3.36532l-9.52 9.52a2.38 2.38 0 0 1-1.68266.69734z" />
-                </svg>
-              </div>
+            <motion.h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {slides[activeIndex].title}
+            </motion.h1>
+            <motion.p 
+              className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 max-w-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {slides[activeIndex].desc}
+            </motion.p>
+            <motion.div 
+              className="flex gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <button className="px-6 py-3 md:px-8 md:py-4 cursor-pointer flex gap-2 items-center rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 transition-all duration-300 text-base md:text-lg">
+                <FaRegCirclePlay className="text-xl md:text-2xl" /> Play Now
+              </button>
+              <button className="bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white w-12 h-12 md:w-14 md:h-14 rounded-xl text-xl md:text-2xl flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/10">
+                <LuPlus className="text-2xl md:text-3xl" />
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* Swiper Section */}
+          <div className="w-full lg:w-1/2">
+            {/* Main Swiper */}
+            <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl">
+              <Swiper
+                loop={true}
+                speed={800}
+                modules={[Thumbs]}
+                thumbs={{ swiper: thumbsSwiper }}
+                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                className="w-full h-full"
+              >
+                {slides.map((slide, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div className="relative w-full h-full">
+                      <img
+                        src={slide.image}
+                        alt={slide.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <a
+                        href={slide.trailer}
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white px-6 py-3 md:px-8 md:py-4 rounded-xl bg-black/30 backdrop-blur-sm hover:bg-black/50 transition-all duration-300 flex flex-col items-center gap-2 group"
+                      >
+                        <BiMoviePlay className="text-4xl md:text-5xl group-hover:scale-110 transition-transform duration-300" />
+                        <p className="text-base md:text-lg font-semibold">Watch Trailer</p>
+                      </a>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
 
-            {/* Thumbnail Swiper */}
-            <Swiper
-              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-              onSwiper={setThumbsSwiper}
-              direction={"horizontal"} // default for mobile
-              slidesPerView={4}
-              spaceBetween={16}
-              speed={600}
-              loop={true}
-              breakpoints={{
-                768: {
-                  direction: "vertical", // switch to vertical on larger screens
-                  slidesPerView: 3,
-                  spaceBetween: 20,
-                },
-              }}
-              className="w-full h-full md:w-full md:h-full"
-              modules={[Navigation]}
-              navigation={{
-                prevEl: ".prev",
-                nextEl: ".next",
-              }}
-            >
-              {slides.map((slide, idx) => (
-                <SwiperSlide key={idx}>
-                  <img
-                    src={slide.image}
-                    alt={slide.title}
-                    className={`
-          w-[70px] h-[70px] md:w-full md:h-[90px] object-cover rounded-lg cursor-pointer transition-all duration-300
-          ${
-            activeIndex === idx
-              ? "border-4 border-blue-700 opacity-100"
-              : "border border-blue-300 opacity-70"
-          }
-        `}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            {/* Bottom Navigation */}
-            <div className="hidden md:flex justify-center mt-3">
-              <div className="next -translate-y-2 transition-all duration-300 bg-black/30 backdrop:blur-md  hover:bg-gradient-to-r from-blue-500 to-purple-500 w-28 h-8 rounded-lg z-30 flex items-center justify-center cursor-pointer">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 fill-white rotate-0"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M11.99997 18.1669a2.38 2.38 0 0 1-1.68266-.69733l-9.52-9.52a2.38 2.38 0 1 1 3.36532-3.36532l7.83734 7.83734 7.83734-7.83734a2.38 2.38 0 1 1 3.36532 3.36532l-9.52 9.52a2.38 2.38 0 0 1-1.68266.69734z" />
-                </svg>
-              </div>
+            {/* Thumbnails */}
+            <div className="mt-4 md:mt-6">
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                spaceBetween={12}
+                slidesPerView={4}
+                watchSlidesProgress={true}
+                className="w-full"
+                breakpoints={{
+                  320: {
+                    slidesPerView: 3,
+                    spaceBetween: 8,
+                  },
+                  480: {
+                    slidesPerView: 4,
+                    spaceBetween: 8,
+                  },
+                  768: {
+                    slidesPerView: 5,
+                    spaceBetween: 12,
+                  },
+                }}
+              >
+                {slides.map((slide, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div 
+                      className={`relative aspect-video rounded-lg overflow-hidden cursor-pointer group transition-all duration-300 ${
+                        activeIndex === idx 
+                          ? "border-4 border-blue-500" 
+                          : "border border-blue-300/30"
+                      }`}
+                    >
+                      <img
+                        src={slide.image}
+                        alt={slide.title}
+                        className={`w-full h-full object-cover transition-all duration-300 ${
+                          activeIndex === idx
+                            ? "opacity-100 scale-105"
+                            : "opacity-70 group-hover:opacity-100"
+                        }`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </div>
         </div>

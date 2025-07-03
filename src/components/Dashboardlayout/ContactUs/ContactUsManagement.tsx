@@ -109,7 +109,7 @@ const ContactUsManagement = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent   mb-4 tracking-widest">
+          <h1 className="text-4xl md:text-5xl font-bold text-center text-white   mb-4 tracking-widest">
             CONTACT US
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">

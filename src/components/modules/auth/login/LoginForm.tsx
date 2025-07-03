@@ -131,7 +131,7 @@ const LoginForm = () => {
                         <button
                           type="button"
                           onClick={() => setShowPassword((prev) => !prev)}
-                          className="absolute inset-y-0 right-2 flex items-center text-gray-400 hover:text-white"
+                          className="absolute inset-y-0 right-2 cursor-pointer flex items-center text-gray-400 hover:text-white"
                           tabIndex={-1}
                         >
                           {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -156,7 +156,7 @@ const LoginForm = () => {
           </form>
         </Form>
 
-        <div className="mt-4 space-y-2">
+        {/* <div className="mt-4 space-y-2">
           <Button
             type="button"
             onClick={() => handleFillCredentials("admin@gmail.com", "123456")}
@@ -171,7 +171,7 @@ const LoginForm = () => {
           >
             Fill User Credentials
           </Button>
-        </div>
+        </div> */}
 
         <p className="text-center mt-4 text-white">
           You have no account?{" "}

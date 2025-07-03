@@ -72,10 +72,10 @@ const ManageGenre = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#00031b] p-4">
+    <div className="min-h-screen bg-[#00031b] ">
       <div className="max-w-4xl mx-auto">
         {/* Header Section */}
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center md:pt-4 mb-8">
           <h1 className="lg:text-3xl text-2xl font-bold  text-white">
             Genre
           </h1>

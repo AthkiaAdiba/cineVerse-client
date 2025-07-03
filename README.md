@@ -1,28 +1,25 @@
-# Movie Streaming Website – Dashboard Features
+# CineVerse – Movie Streaming Platform
 
-# User Management
-Feature: View, search, filter, and manage users.
-Description: Admins can manage all registered users, assign roles (admin, moderator, viewer), ban users, and see user activity stats.
+Live Demo: [https://cineverse-liart.vercel.app/](https://cineverse-liart.vercel.app/)
 
-# Movie Management
-Feature: Add, update, delete movies.
-Description: Admins can upload movie details (title, description, genre, cast, release date, trailer, video file, poster image) with support for rich content. Status can be set as Published/Draft.
+## What is this project?
 
-# Category & Genre Management
-Feature: Manage movie categories and genres.
-Description: Create and assign categories (e.g. Action, Drama, Comedy) to organize movies efficiently.
+CineVerse is a movie streaming web application for viewers and administrators. Users can discover, watch, review, and add movies to a personal watchlist for later viewing. Admins have a dashboard to manage content, users, and more. The platform is built with modern web technologies and offers a seamless, dark-mode-first experience.
 
-# Watch History & Analytics
-Feature: Track user watch history.
-Description: See what each user has watched and generate overall analytics for most-watched movies, retention rate, etc.
+### Key Capabilities
+- **User Management:** Admins can view and manage users, ban/unban users, and view user activity stats.
+- **Movie Management:** Add, update, and delete movies with rich details (title, description, genre, cast, release date, trailer, video, poster). Movies can be set as Published or Draft.
+- **Category & Genre Management:** Create and assign categories/genres (e.g., Action, Drama, Comedy) for efficient movie organization.
+- **Watchlist:** Users can add movies to a personal watchlist for later viewing.
+- **Comments & Reviews Moderation:** View and moderate user reviews, enable/disable comments, delete inappropriate reviews, or pin top reviews.
+- **Newsletter:** Send system-wide updates, promo alerts, or movie recommendations via email or in-app push notifications.
+- **Purchase & Payment:** Users can buy or rent movies, and admins can view purchase history and payment analytics.
+- **Dark Mode:** The dashboard and user interface are optimized for dark mode for better accessibility and user experience.
+ 
 
-# Comments & Reviews Moderation
-Feature: View and moderate user reviews.
-Description: Admins can enable/disable comments on movies, delete inappropriate reviews, or pin top reviews.
+### Tech Stack
+- Next.js, Tailwind CSS, Framer Motion, Redux, Express Js, Prisma, PostgreSQL, vercel
 
-# Newsletter
-Feature: Send emails or notifications to users.
-Description: Send system-wide updates, promo alerts, or movie recommendations via email or in-app push.
+---
 
-# Dark Mode
-Description: Only dark mode support for the dashboard for better accessibility and user experience.
+CineVerse is ideal for anyone looking to launch a modern movie streaming service with a beautiful user experience. Some advanced admin features are planned for future releases.

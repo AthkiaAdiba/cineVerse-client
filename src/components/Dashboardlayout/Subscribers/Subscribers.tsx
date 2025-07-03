@@ -66,7 +66,7 @@ const NewsletterSubscribers = () => {
       animate="visible"
       variants={containerVariants}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto" >
         <motion.h2
           className="text-xl md:text-4xl font-bold text-white mb-12 text-left"
           variants={itemVariants}
@@ -104,14 +104,14 @@ const NewsletterSubscribers = () => {
             {subscribers.map((subscriber: Subscriber) => (
               <motion.div
                 key={subscriber.id}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-6 flex items-center gap-3 hover:border-purple-400/30 transition duration-300"
+                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-4 md:p-6 flex items-center gap-3 hover:border-purple-400/30 transition duration-300"
                 variants={itemVariants}
               >
                 <div className="p-3 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20">
                   <EnvelopeIcon className="h-6 w-6 text-purple-400" />
                 </div>
                 <div>
-                  <p className="text-white text-lg truncate font-semibold">
+                  <p className="text-white text-[16px]  md:text-lg truncate font-semibold">
                     {subscriber.email}
                   </p>
                   <p className="text-gray-400 text-sm">

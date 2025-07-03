@@ -385,29 +385,29 @@ const MovieDetails = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 z-[999] bg-black/40 backdrop-blur-xl flex items-center justify-center p-4 cursor-pointer"
+              className="fixed inset-0 z-[999] bg-black/40 backdrop-blur-xl flex items-center justify-center p-2 sm:p-4 cursor-pointer overflow-y-auto"
             >
               <motion.div 
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
                 transition={{ 
-                  type: "spring",
+                  type: 'spring',
                   duration: 0.5,
                   bounce: 0.2,
                   damping: 20,
                   stiffness: 100
                 }}
-                className="bg-gradient-to-b from-[#1e2433] to-[#151b2b] rounded-2xl shadow-2xl p-8 w-[90%] max-w-[800px] text-center relative border border-gray-700/50"
+                className="bg-gradient-to-b from-[#1e2433] to-[#151b2b] rounded-2xl shadow-2xl p-3 sm:p-6 w-full max-w-[800px] text-center relative border border-gray-700/50"
               >
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ duration: 0.2 }}
                   onClick={() => setShowModal(false)}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-800/30 cursor-pointer"
+                  className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors p-1.5 rounded-lg hover:bg-gray-800/30 cursor-pointer"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </motion.button>
@@ -419,11 +419,11 @@ const MovieDetails = () => {
                     transition={{ 
                       delay: 0.2,
                       duration: 0.5,
-                      type: "spring",
+                      type: 'spring',
                       bounce: 0.3,
                       damping: 15
                     }}
-                    className="bg-gradient-to-r from-red-500 to-pink-500 absolute -translate-y-14 text-white px-8 py-3 rounded-full text-sm font-medium shadow-lg border border-red-400/20"
+                    className="bg-gradient-to-r from-red-500 to-pink-500 absolute -translate-y-10 sm:-translate-y-14 text-white px-4 sm:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium shadow-lg border border-red-400/20"
                   >
                     <span className="ml-2">
                       {movieDetails?.data?.discount?.percentage}% Off For One Time Purchase
@@ -431,26 +431,24 @@ const MovieDetails = () => {
                   </motion.div>
                 )}
                 <motion.h2 
-                   
-                  className="text-2xl font-bold mb-8 text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+                  className="text-xl sm:text-2xl font-bold mb-4 sm:mb-8 text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
                 >
                   Choose Your Purchase Option
                 </motion.h2>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
                   <motion.div 
-                    className="bg-gray-800/30 rounded-xl p-8 border border-gray-700/50 hover:border-blue-500/30 transition-all duration-300"
+                    className="bg-gray-800/30 rounded-xl p-4 sm:p-8 border border-gray-700/50 hover:border-blue-500/30 transition-all duration-300"
                   >
-                    <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-                      <span className="p-3 rounded-lg bg-blue-500/10">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                      <span className="p-2 sm:p-3 rounded-lg bg-blue-500/10">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
                           <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
                         </svg>
                       </span>
                       One Time Purchase
                     </h3>
-                    <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center justify-between mb-4 sm:mb-6">
                       <span className="text-gray-400">Price:</span>
                       <div className="text-right">
                         {appliedCoupon ? (
@@ -483,48 +481,43 @@ const MovieDetails = () => {
                       </div>
                     </div>
                     <motion.button
-                      onClick={() => handleOptionSelect(movieDetails?.data, "BOUGHT")}
-                      className="w-full py-4 px-4 cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-medium shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 hover:-translate-y-0.5"
+                      onClick={() => handleOptionSelect(movieDetails?.data, 'BOUGHT')}
+                      className="w-full py-2 sm:py-4 px-2 sm:px-4 cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl text-sm sm:text-base hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-medium shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 hover:-translate-y-0.5"
                     >
                       Buy Now
                     </motion.button>
                   </motion.div>
-
                   <motion.div 
-                     
-                    className="bg-gray-800/30 rounded-xl p-8 border border-gray-700/50 hover:border-purple-500/30 transition-all duration-300"
+                    className="bg-gray-800/30 rounded-xl p-4 sm:p-8 border border-gray-700/50 hover:border-purple-500/30 transition-all duration-300"
                   >
-                    <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-                      <span className="p-3 rounded-lg bg-purple-500/10">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-400" viewBox="0 0 20 20" fill="currentColor">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                      <span className="p-2 sm:p-3 rounded-lg bg-purple-500/10">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400" viewBox="0 0 20 20" fill="currentColor">
                           <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
                           <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
                         </svg>
                       </span>
                       Rent Movie
                     </h3>
-                    <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center justify-between mb-4 sm:mb-6">
                       <span className="text-gray-400">Price:</span>
-                      <span className="text-white font-bold text-2xl">${movieDetails?.data?.rentprice}</span>
+                      <span className="text-white font-bold text-lg sm:text-2xl">${movieDetails?.data?.rentprice}</span>
                     </div>
                     <motion.button
-                       
-                      
-                      onClick={() => handleOptionSelect(movieDetails?.data, "RENTED")}
-                      className="w-full py-4 px-4 cursor-pointer bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 font-medium shadow-lg shadow-purple-500/20 hover:shadow-purple-500/30 hover:-translate-y-0.5"
+                      onClick={() => handleOptionSelect(movieDetails?.data, 'RENTED')}
+                      className="w-full py-2 sm:py-4 px-2 sm:px-4 cursor-pointer bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl text-sm sm:text-base hover:from-purple-700 hover:to-pink-700 transition-all duration-300 font-medium shadow-lg shadow-purple-500/20 hover:shadow-purple-500/30 hover:-translate-y-0.5"
                     >
                       Rent Now
                     </motion.button>
                   </motion.div>
                 </div>
-
                 {!movieDetails?.data?.discount?.isActive && (
                   <motion.div 
-                    className="mt-8 bg-gray-800/30 rounded-xl p-8 border border-gray-700/50"
+                    className="mt-6 sm:mt-8 bg-gray-800/30 rounded-xl p-4 sm:p-8 border border-gray-700/50"
                   >
-                    <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-                      <span className="p-3 rounded-lg bg-green-500/10">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                      <span className="p-2 sm:p-3 rounded-lg bg-green-500/10">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 text-green-400" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                         </svg>
                       </span>
@@ -536,7 +529,7 @@ const MovieDetails = () => {
                         placeholder="Enter coupon code"
                         value={cupon}
                         onChange={(e) => setCoupon(e.target.value)}
-                        className="w-full px-4 py-3 bg-gray-700/30 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-700/30 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 text-sm sm:text-base"
                       />
                       <motion.button
                         whileHover={{ scale: 1.05 }}
@@ -544,9 +537,9 @@ const MovieDetails = () => {
                         transition={{ duration: 0.2 }}
                         onClick={handleCouponValidation}
                         disabled={isCuponLoading}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 bg-green-500/10 text-green-400 rounded-lg text-sm font-medium hover:bg-green-500/20 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 px-3 sm:px-4 py-1.5 sm:py-2 bg-green-500/10 text-green-400 rounded-lg text-xs sm:text-sm font-medium hover:bg-green-500/20 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        {isCuponLoading ? "Applying..." : "Apply"}
+                        {isCuponLoading ? 'Applying...' : 'Apply'}
                       </motion.button>
                     </div>
                   </motion.div>

@@ -6,6 +6,7 @@ import {
   PhoneIcon,
   MapPinIcon
 } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 const Footer = () => {
   const footerVariants = {
@@ -28,7 +29,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
-      <div className="container mx-auto px-4 xl:px-12 py-12">
+      <div className="container mx-auto px-4 xl:px-12 py-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -57,14 +58,14 @@ const Footer = () => {
           >
             <h4 className="text-lg font-semibold text-gray-200">Quick Links</h4>
             <ul className="space-y-2">
-              {['Movies', 'Series', 'Trending', 'New Releases'].map((item, i) => (
+              {['Movies', 'Upcoming', 'About', 'Contact'].map((item, i) => (
                 <li key={item}>
-                  <a 
-                    href="#" 
+                  <Link 
+                    href={item === 'Movies' ? '/movies' : item === 'Upcoming' ? '/comingSoon' : item === 'About' ? '/about' : '/contactUs'} 
                     className="text-gray-400 hover:text-indigo-400 transition-colors"
                   >
                     {item}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -80,12 +81,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
                 <li key={item}>
-                  <a 
-                    href="#" 
+                  <Link 
+                    href={item === 'Privacy Policy' ? '/privacy-policy' : item === 'Terms of Service' ? '/terms-of-service' : '/cookie-policy'} 
                     className="text-gray-400 hover:text-indigo-400 transition-colors"
                   >
                     {item}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -105,11 +106,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <PhoneIcon className="w-5 h-5 text-indigo-400" />
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+                <span className="text-gray-400">+8801717171717</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPinIcon className="w-5 h-5 text-indigo-400" />
-                <span className="text-gray-400">Los Angeles, CA</span>
+                <span className="text-gray-400">Dhaka, Bangladesh</span>
               </div>
             </div>
           </motion.div>
@@ -120,9 +121,9 @@ const Footer = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="border-t border-gray-800 mt-12 pt-8"
+          className="border-t border-gray-800 mt-12 "
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6">
             {/* <div className="flex space-x-6">
               {[, TwitterIcon, InstagramIcon].map((Icon, i) => (
                 <motion.a
@@ -135,7 +136,7 @@ const Footer = () => {
                 </motion.a>
               ))}
             </div> */}
-            <p className="text-gray-400 text-center">
+            <p className="text-gray-400 text-center pt-9">
               © {new Date().getFullYear()} CineVerse. All rights reserved.
             </p>
           </div>

@@ -40,7 +40,7 @@ const NewReleases = () => {
   };
 
   return (
-    <section className="relative  py-10 ">
+    <section className="py-10" id="new-releases">
       <div className="container mx-auto px-4" ref={ref}>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
